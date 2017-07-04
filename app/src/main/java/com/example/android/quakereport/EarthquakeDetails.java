@@ -9,9 +9,9 @@ public class EarthquakeDetails {
 
     private String mLocation;
 
-    private String mTime;
+    private long mTime;
 
-    public EarthquakeDetails(double vMag, String vLocation, String vTime){
+    public EarthquakeDetails(double vMag, String vLocation, long vTime){
         mMag = vMag;
         mLocation = vLocation;
         mTime = vTime;
@@ -25,7 +25,7 @@ public class EarthquakeDetails {
         return mLocation;
     }
 
-    public String getmTime(){
+    public long getmTime(){
         return mTime;
     }
 
