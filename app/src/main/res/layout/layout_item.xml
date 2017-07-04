@@ -7,51 +7,76 @@
 
     <TextView
         android:id="@+id/mag"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:layout_weight="1"
-        android:textAlignment="center"
-        android:textSize="15sp"
+        android:layout_margin="4dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/magnitude_circle"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
         tools:text="Mag" />
 
-    <TextView
-        android:id="@+id/offset_location"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"
         android:layout_weight="1"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        tools:text="Location" />
+        android:layout_marginLeft="4dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/primary_location"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:layout_weight="1"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        tools:text="Location" />
+        <TextView
+            android:id="@+id/offset_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_weight="1"
+            android:textColor="#9E9E9E"
+            android:textSize="12sp"
+            tools:text="16 km N of" />
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:layout_weight="1"
-        android:textSize="15sp"
-        tools:text="Date" />
+        <TextView
+            android:id="@+id/primary_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="15sp"
+            tools:text="Dakota" />
 
-    <TextView
-        android:id="@+id/clock"
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"
         android:layout_weight="1"
-        android:textSize="15sp"
-        tools:text="Time" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="15sp"
+            android:gravity="right"
+            android:textColor="#9E9E9E"
+            tools:text="Date" />
+
+        <TextView
+            android:id="@+id/clock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="#9E9E9E"
+            android:textSize="15sp"
+            tools:text="Time" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

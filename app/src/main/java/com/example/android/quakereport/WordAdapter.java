@@ -63,7 +63,7 @@ public class WordAdapter extends ArrayAdapter<EarthquakeDetails> {
 
         if (splitter != -1) {
             offsetString = location.substring(0,splitter+2);
-            primaryString = location.substring(splitter+2,location.length());
+            primaryString = location.substring(splitter+3,location.length());
         }
 
         else{
