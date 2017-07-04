@@ -5,13 +5,13 @@ package com.example.android.quakereport;
  */
 public class EarthquakeDetails {
 
-    private double mMag;
+    private String mMag;
 
     private String mLocation;
 
     private long mTime;
 
-    public EarthquakeDetails(double vMag, String vLocation, long vTime){
+    public EarthquakeDetails(String vMag, String vLocation, long vTime){
         mMag = vMag;
         mLocation = vLocation;
         mTime = vTime;
