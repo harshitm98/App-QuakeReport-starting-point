@@ -41,7 +41,7 @@ public class WordAdapter extends ArrayAdapter<EarthquakeDetails> {
         locationText.setText(earthquakeDetails.getLocation());
 
         TextView timeText = (TextView) listItemView.findViewById(R.id.times);
-        timeText.setText(earthquakeDetails.getmTime());
+        timeText.setText(""+earthquakeDetails.getmTime());
 
         return listItemView;
     }
