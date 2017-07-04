@@ -18,7 +18,7 @@ public class EarthquakeDetails {
     }
 
     public String getMag(){
-        return "" + mMag;
+        return  mMag;
     }
 
     public String getLocation(){
