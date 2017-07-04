@@ -11,10 +11,13 @@ public class EarthquakeDetails {
 
     private long mTime;
 
-    public EarthquakeDetails(String vMag, String vLocation, long vTime){
+    private String mUrl;
+
+    public EarthquakeDetails(String vMag, String vLocation, long vTime, String vUrl){
         mMag = vMag;
         mLocation = vLocation;
         mTime = vTime;
+        mUrl = vUrl;
     }
 
     public String getMag(){
@@ -28,6 +31,8 @@ public class EarthquakeDetails {
     public long getmTime(){
         return mTime;
     }
+
+    public String getUrl() { return mUrl; }
 
 
 }
