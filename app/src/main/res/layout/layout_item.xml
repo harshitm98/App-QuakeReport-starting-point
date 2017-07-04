@@ -30,7 +30,7 @@
             android:layout_marginTop="2dp"
             android:fontFamily="sans-serif-medium"
             android:layout_weight="1"
-            android:textColor="#9E9E9E"
+            android:textColor="@color/textColorEarthquakeDetails"
             android:textSize="12sp"
             tools:text="16 km N of" />
 
@@ -39,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
+            android:textColor="@color/textColorEarthquakeLocation"
             android:layout_weight="1"
             android:fontFamily="sans-serif-medium"
             android:textSize="15sp"
@@ -61,7 +62,7 @@
             android:fontFamily="sans-serif-medium"
             android:textSize="15sp"
             android:gravity="right"
-            android:textColor="#9E9E9E"
+            android:textColor="@color/textColorEarthquakeDetails"
             tools:text="Date" />
 
         <TextView
@@ -72,7 +73,7 @@
             android:fontFamily="sans-serif-medium"
             android:layout_weight="1"
             android:gravity="right"
-            android:textColor="#9E9E9E"
+            android:textColor="@color/textColorEarthquakeDetails"
             android:textSize="15sp"
             tools:text="Time" />
 
