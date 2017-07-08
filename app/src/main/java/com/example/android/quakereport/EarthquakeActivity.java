@@ -30,13 +30,15 @@ public class EarthquakeActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
 
+    private static final String requestUrl = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
         // Create a fake list of earthquake locations.
-        final ArrayList<EarthquakeDetails> earthquakes = QueryUtils.extractEarthquakes();
+        final ArrayList<EarthquakeDetails> earthquakes = QueryUtils.fetchEarthquakeData(requestUrl);
 
 
         // Find a reference to the {@link ListView} in the layout
