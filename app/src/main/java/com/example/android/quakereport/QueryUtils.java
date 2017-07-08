@@ -98,6 +98,7 @@ public final class QueryUtils {
                 jsonResponse = readFromStream(inputStream);
             } else {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
+                Log.v(LOG_TAG,"JSON response is " + jsonResponse);
             }
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);

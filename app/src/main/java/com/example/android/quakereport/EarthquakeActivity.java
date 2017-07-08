@@ -31,14 +31,41 @@ public class EarthquakeActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
 
-    private static final String requestUrl = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
+    private static final String requestUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=2&limit=20";
 
+    public WordAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
+        EarthquakeAsyncTask task = new EarthquakeAsyncTask();
+        task.execute(requestUrl);
 
+        // Find a reference to the {@link ListView} in the layout
+        final ListView earthquakeListView = (ListView) findViewById(R.id.list);
+
+        // Create a new {@link ArrayAdapter} of earthquakes
+
+        mAdapter = new WordAdapter(this, new ArrayList<EarthquakeDetails>());
+
+        earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                EarthquakeDetails item = mAdapter.getItem(i);
+                Uri webpage = Uri.parse(item.getUrl());
+                Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
+
+
+        // Set the adapter on the {@link ListView}
+        // so the list can be populated in the user interface
+        earthquakeListView.setAdapter(mAdapter);
 
 
 
@@ -50,36 +77,21 @@ public class EarthquakeActivity extends AppCompatActivity {
         protected ArrayList<EarthquakeDetails> doInBackground(String... url) {
 
             // Create a fake list of earthquake locations.
-            ArrayList<EarthquakeDetails> results = QueryUtils.fetchEarthquakeData(requestUrl);
+            ArrayList<EarthquakeDetails> data = QueryUtils.fetchEarthquakeData(url[0]);
 
-            return results;
+            return data;
         }
 
 
-        protected void onPostExecute(final ArrayList<EarthquakeDetails> results) {
-            // Find a reference to the {@link ListView} in the layout
-            final ListView earthquakeListView = (ListView) findViewById(R.id.list);
+        protected void onPostExecute(final ArrayList<EarthquakeDetails> data) {
+            // Clear the adapter of previous earthquake data
+            mAdapter.clear();
 
-            // Create a new {@link ArrayAdapter} of earthquakes
-            final WordAdapter adapter = new WordAdapter(this, results);
-
-            earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                    EarthquakeDetails item = results.get(i);
-                    Uri webpage = Uri.parse(item.getUrl());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-                    if (intent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(intent);
-                    }
-                }
-            });
-
-
-            // Set the adapter on the {@link ListView}
-            // so the list can be populated in the user interface
-            earthquakeListView.setAdapter(adapter);
+            // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+            // data set. This will trigger the ListView to update.
+            if (data != null && !data.isEmpty()) {
+                mAdapter.addAll(data);
+            }
         }
     }
 }
