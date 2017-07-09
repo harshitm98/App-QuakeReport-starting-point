@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ import java.util.ArrayList;
 public class EarthquakeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<EarthquakeDetails>> {
 
     private TextView mEmptyView;
+
+    private ProgressBar mProgressBar;
 
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
@@ -87,6 +90,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         mEmptyView = (TextView)findViewById(R.id.empty_view);
         earthquakeListView.setEmptyView(mEmptyView);
 
+        mProgressBar = (ProgressBar)findViewById(R.id.loading_spinner);
+
     }
 
     @Override
@@ -105,6 +110,10 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         if (earthquakes != null && !earthquakes.isEmpty()) {
             mAdapter.addAll(earthquakes);
         }
+
+        // Set the visibility of {@link ProgressBar} to GONE.
+
+        mProgressBar.setVisibility(View.GONE);
 
         // Set empty state text to display "No earthquakes found."
         mEmptyView.setText("No earthquakes found.");
