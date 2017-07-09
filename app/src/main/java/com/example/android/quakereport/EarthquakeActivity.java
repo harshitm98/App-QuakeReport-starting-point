@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -81,7 +82,9 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // so the list can be populated in the user interface
         earthquakeListView.setAdapter(mAdapter);
 
-
+        TextView emptyView = (TextView)findViewById(R.id.empty_view);
+        emptyView.setText("No earthquakes available.");
+        earthquakeListView.setEmptyView(emptyView);
 
     }
 
