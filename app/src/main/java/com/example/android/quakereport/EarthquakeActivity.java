@@ -32,6 +32,8 @@ import java.util.ArrayList;
 
 public class EarthquakeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<EarthquakeDetails>> {
 
+    private TextView mEmptyView;
+
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
@@ -82,9 +84,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // so the list can be populated in the user interface
         earthquakeListView.setAdapter(mAdapter);
 
-        TextView emptyView = (TextView)findViewById(R.id.empty_view);
-        emptyView.setText("No earthquakes available.");
-        earthquakeListView.setEmptyView(emptyView);
+        mEmptyView = (TextView)findViewById(R.id.empty_view);
+        earthquakeListView.setEmptyView(mEmptyView);
 
     }
 
@@ -104,6 +105,10 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         if (earthquakes != null && !earthquakes.isEmpty()) {
             mAdapter.addAll(earthquakes);
         }
+
+        // Set empty state text to display "No earthquakes found."
+        mEmptyView.setText("No earthquakes found.");
+
     }
 
     @Override
